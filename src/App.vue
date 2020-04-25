@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
+    <Post />
   </div>
 </template>
 
 <script>
+import Post from './components/post/Post.vue'
+
 export default {
+  name: 'app',
+  components: {
+    Post
+  },
   data () {
-    return {
-      msg: 'Hello World'
-    }
+    return {}
   }
 }
 </script>
