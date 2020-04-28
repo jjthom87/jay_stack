@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <Post />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Post from './components/post/Post.vue'
 
 export default {
   name: 'app',
-  components: {
-    Post
-  },
   data () {
     return {}
   }
