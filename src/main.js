@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
 
 import App from './App.vue';
 
@@ -8,6 +10,7 @@ import Post from './components/post/Post.vue';
 import Articles from './components/articles/Article.vue';
 
 Vue.use(VueRouter)
+Vue.use(VueMaterial)
 
 const router = new VueRouter({
   mode: 'history',
