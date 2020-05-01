@@ -1,24 +1,24 @@
 <template>
-  <div class="d-flex align-content-center">
+  <div class="d-flex justify-content-center">
     <form class="md-layout" id="postForm" @submit.prevent="processForm">
-      <md-card class="md-layout-item md-size-50 md-small-size-50">
+      <md-card class="md-layout-item md-size-100 md-small-size-100" style="background: khaki;">
         <md-card-header>
-          <div class="md-title">Post Question</div>
+          <div class="md-title text-center" style="font-size: 35px;">Post Question</div>
         </md-card-header>
         <md-card-content>
-          <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-50">
-              <label for="title">Title</label>
-              <input type="text" v-model="articleTitle"/>
+          <div>
+            <div class="md-layout-item md-small-size-100 d-flex justify-content-center">
+              <input id="title-input" type="text" v-model="articleTitle" placeholder="Title"/>
             </div>
-            <div class="md-layout-item md-small-size-50">
-              <label for="question">Question</label>
-              <textarea type="text" v-model="articleBody"></textarea>
+            <div class="md-layout-item md-small-size-100 d-flex justify-content-center">
+              <textarea id="post-input" type="text" v-model="articleBody" placeholder="Type Post Here"></textarea>
             </div>
           </div>
         </md-card-content>
         <md-card-actions>
-          <md-button type="submit" class="md-primary">Create Post</md-button>
+          <md-button type="submit" class="md-primary">
+            <span id="submit-text">Submit Post</span>
+          </md-button>
         </md-card-actions>
       </md-card>
     </form>
@@ -51,4 +51,26 @@ export default {
 </script>
 
 <style lang="css">
+  form {
+    width: 1000px;
+  }
+  .md-layout-item {
+    margin: 25px;
+  }
+
+  #title-input {
+    width: 450px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  #post-input {
+    width: 450px;
+    height: 125px;
+    font-size: 20px;
+  }
+
+  #submit-text {
+    font-size: 20px;
+  }
 </style>
