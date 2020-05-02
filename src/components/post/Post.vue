@@ -8,16 +8,16 @@
         <md-card-content>
           <div>
             <div class="md-layout-item md-small-size-100 d-flex justify-content-center">
-              <input id="title-input" type="text" v-model="articleTitle" placeholder="Title"/>
+              <input id="title-input" type="text" v-model="question" placeholder="What is your question?"/>
             </div>
-            <div class="md-layout-item md-small-size-100 d-flex justify-content-center">
+            <!-- <div class="md-layout-item md-small-size-100 d-flex justify-content-center">
               <textarea id="post-input" type="text" v-model="articleBody" placeholder="Type Post Here"></textarea>
-            </div>
+            </div> -->
           </div>
         </md-card-content>
         <md-card-actions>
           <md-button type="submit" class="md-primary">
-            <span id="submit-text">Submit Post</span>
+            <span id="submit-text">Submit Question</span>
           </md-button>
         </md-card-actions>
       </md-card>
@@ -31,17 +31,21 @@ import axios from 'axios';
 export default {
   data: () => ({
     form: {
-      articleTitle: '',
-      articleBody: ''
+      question: ''
     }
   }),
   methods: {
-    processForm () {
-      axios.post(`http://localhost:3000/v1/api/article`, {
-        articleTitle: this.articleTitle,
-        articleBody: this.articleBody
+    processForm (e) {
+      e.preventDefault();
+      axios.post(`http://localhost:3000/v1/api/question`, {
+        question: this.question
       })
-      .then(response => {})
+      .then(response => {
+        if(response.data.statusCode == 200){
+          alert("Question Added Successfully");
+          e.target.reset();
+        }
+      })
       .catch(e => {
         console.log(e);
       })
