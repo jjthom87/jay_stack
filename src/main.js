@@ -7,7 +7,7 @@ import App from './App.vue';
 
 import Home from './components/home/Home.vue';
 import Post from './components/post/Post.vue';
-import Articles from './components/articles/Article.vue';
+import Question from './components/question/Question.vue';
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
@@ -18,7 +18,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/post', component: Post },
-    { path: '/articles', component: Articles }
+    { path: '/question/:id', component: Question, props: true }
   ]
 })
 
