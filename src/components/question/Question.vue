@@ -54,7 +54,7 @@ export default {
     }
   },
   mounted: function () {
-    axios.get("http://localhost:3000/v1/api/question/" + this.$route.params.id)
+    axios.get(process.env.VUE_APP_URL + "/v1/api/question/" + this.$route.params.id)
     .then(response => {
       this.question = response.data.question;
     })
@@ -62,7 +62,7 @@ export default {
       console.log(e);
     })
 
-    axios.get("http://localhost:3000/v1/api/responses/" + this.$route.params.id)
+    axios.get(process.env.VUE_APP_URL + "/v1/api/responses/" + this.$route.params.id)
     .then(response => {
       this.responses = response.data.responses;
     })
@@ -73,7 +73,7 @@ export default {
   methods: {
     processResponse (e) {
       e.preventDefault();
-      axios.post(`http://localhost:3000/v1/api/response`, {
+      axios.post(process.env.VUE_APP_URL + `/v1/api/response`, {
         response: this.response,
         question_id: this.question.id,
         responderName: this.responderName

@@ -15,6 +15,7 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Material+Icons");
 body {
   font-family: Helvetica, sans-serif;
 }

@@ -41,7 +41,7 @@ export default {
   methods: {
     processQuestion (e) {
       e.preventDefault();
-      axios.post(`http://localhost:3000/v1/api/question`, {
+      axios.post(process.env.VUE_APP_URL + `/v1/api/question`, {
         question: this.question
       })
       .then(response => {

@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted: function () {
-    axios.get(`http://localhost:3000/v1/api/questions`)
+    axios.get(process.env.VUE_APP_URL + `/v1/api/questions`)
     .then(response => {
       this.questions = response.data.questions;
       this.allQuestions = response.data.questions;
