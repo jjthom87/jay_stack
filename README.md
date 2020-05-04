@@ -11,3 +11,17 @@
 # Bootstrap
 * https://getbootstrap.com/docs/4.0/utilities/flex/
 * https://getbootstrap.com/docs/4.4/getting-started/download/
+
+# Template
+* https://github.com/gothinkster/vue-realworld-example-app
+
+# Heroku
+* https://cli.vuejs.org/guide/deployment.html#heroku
+
+# Vue Env Vars
+* https://medium.com/js-dojo/how-to-use-environment-variables-in-vue-js-273eba0102b0
+* https://cli.vuejs.org/guide/mode-and-env.html#environment-variables
+
+# heroku
+* Client: https://immense-anchorage-91812.herokuapp.com/
+* Api: https://vast-crag-67326.herokuapp.com/

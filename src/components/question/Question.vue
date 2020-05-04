@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header></Header>
-    <p id="question-p" class="text-center"><span id="question-span">Question: {{ this.question.question }}</span></p>
+    <div v-if="question">
+      <p id="question-p" class="text-center"><span id="question-span">Question: {{ this.question.question }}</span></p>
+    </div>
     <div class="md-layout-item md-small-size-100 d-flex justify-content-center">
       <form class="md-layout" id="postForm" @submit.prevent="processResponse">
         <md-card class="md-layout-item md-size-100 md-small-size-100" style="background: khaki;">
@@ -23,15 +25,17 @@
         </md-card>
       </form>
     </div>
-    <ul>
-      <li class="d-flex justify-content-center" v-for="response in responses" style="margin: -25px;">
-        <md-card-content class="response-cards">
-          <md-card class="md-size-100 md-small-size-100" style="background: salmon;">
-            <p class="response-p"><strong>{{response.respondername}}</strong>: {{ response.response }}</p>
-          </md-card>
-        </md-card-content>
-      </li>
-    </ul>
+    <div v-if="responses.length > 0">
+      <ul>
+        <li class="d-flex justify-content-center" v-for="response in responses" style="margin: -25px;">
+          <md-card-content class="response-cards">
+            <md-card class="md-size-100 md-small-size-100" style="background: salmon;">
+              <p class="response-p"><strong>{{response.respondername}}</strong>: {{ response.response }}</p>
+            </md-card>
+          </md-card-content>
+        </li>
+      </ul>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -45,7 +49,7 @@ import Footer from '../fixtures/Footer.vue';
 export default {
   data() {
     return {
-      question: {},
+      question: null,
       responses: [],
       form: {
         response: '',
@@ -56,7 +60,11 @@ export default {
   mounted: function () {
     axios.get(process.env.VUE_APP_URL + "/v1/api/question/" + this.$route.params.id)
     .then(response => {
-      this.question = response.data.question;
+      if(response.data.statusCode === 200){
+        this.question = response.data.question;
+      } else if (response.data.statusCode === 404){
+        this.$router.push('/')
+      }
     })
     .catch(e => {
       console.log(e);

@@ -13,6 +13,7 @@ import App from './App.vue';
 import Home from './components/home/Home.vue';
 import Post from './components/post/Post.vue';
 import Question from './components/question/Question.vue';
+import PageNotFound from './components/error/PageNotFound.vue';
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
@@ -23,7 +24,8 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/post', component: Post },
-    { path: '/question/:id', component: Question, props: true }
+    { path: '/question/:id', component: Question, props: true },
+    { path: "*", component: PageNotFound }
   ]
 })
 
